@@ -10,6 +10,10 @@
 .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.*
+*.tfvars
+*.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
 crash.log
 override.tf
 override.tf.json
@@ -20,6 +24,16 @@ override.tf.json
 packer-manifest.json
 
 ansible/*.retry
+*.vault.yml
+*.vault.yaml
+vault_pass.txt
+kubeconfig
+kubeconfig.*
+admin.conf
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
 
 secrets/**/*.age
 secrets/**/*.pem
