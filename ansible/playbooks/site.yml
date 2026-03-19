@@ -1,0 +1,6 @@
+---
+- name: Configure all homelab hosts
+  hosts: all
+  gather_facts: true
+  roles:
+    - common

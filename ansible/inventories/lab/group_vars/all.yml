@@ -1,0 +1,5 @@
+---
+ansible_user: ops
+ansible_become: true
+timezone: Asia/Jakarta
+homelab_domain: lab.example.internal
