@@ -1,0 +1,9 @@
+---
+- name: Ensure base packages are installed
+  ansible.builtin.package:
+    name:
+      - curl
+      - git
+      - qemu-guest-agent
+      - vim
+    state: present
