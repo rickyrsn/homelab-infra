@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kong
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://charts.konghq.com
+    chart: ingress
+    targetRevision: 0.22.0
+    helm:
+      releaseName: kong
+      values: |
+        controller:
+          ingressController:
+            enabled: true
+            ingressClass: kong
+            createIngressClass: true
+        gateway:
+          enabled: true
+          proxy:
+            type: LoadBalancer
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kong
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
