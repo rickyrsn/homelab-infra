@@ -1,4 +1,4 @@
-# dreamcatcher-infrastructure
+# homelab-infra
 
 Opinionated homelab infrastructure layout for:
 
@@ -18,16 +18,11 @@ Opinionated homelab infrastructure layout for:
 |   |   `-- lab/
 |   |-- playbooks/
 |   `-- roles/
-|-- argocd/
-|   |-- applications/
-|   |-- bootstrap/
-|   |-- clusters/
-|   `-- projects/
 |-- docs/
 |-- kubernetes/
-|   |-- apps/
-|   |-- bootstrap/
-|   `-- platform/
+|   |-- argocd/
+|   |   `-- apps/
+|   `-- infrastructure/
 |-- packer/
 |   |-- common/
 |   `-- proxmox/
@@ -47,7 +42,7 @@ Opinionated homelab infrastructure layout for:
 2. Use Terraform to provision Proxmox VMs for jump hosts, K3s servers, K3s agents, and support services.
 3. Use Ansible to apply baseline OS hardening, packages, users, SSH policy, and K3s bootstrap tasks that do not belong in image build.
 4. Bootstrap Argo CD into K3s.
-5. Let Argo CD reconcile platform services and applications from `kubernetes/` and `argocd/`.
+5. Let Argo CD reconcile platform services and applications from `kubernetes/`.
 
 ## Directory Conventions
 
@@ -55,9 +50,9 @@ Opinionated homelab infrastructure layout for:
 - `terraform/live/lab/` contains the actual deployed homelab stack.
 - `packer/proxmox/` contains image templates targeted at Proxmox.
 - `ansible/inventories/lab/` maps VMs and clusters to real hosts.
-- `kubernetes/platform/` is for cluster services like ingress, storage, cert-manager, and monitoring.
-- `kubernetes/apps/` is for workloads you personally run in the homelab.
-- `argocd/bootstrap/` is the minimum needed to get GitOps online.
+- `kubernetes/infrastructure/` is for cluster services like ingress, storage, cert-manager, and monitoring.
+- `kubernetes/argocd/apps/` is for workloads you personally run in the homelab.
+- `kubernetes/argocd/` is the minimum needed to get GitOps online.
 - `secrets/` is intentionally not for raw credentials in git; use SOPS/Age, Vault, or external secret backends.
 
 ## Next Good Steps
@@ -66,4 +61,4 @@ Opinionated homelab infrastructure layout for:
 - Define VM classes in `terraform/modules/proxmox-vm/`.
 - Create a base Ubuntu template in `packer/proxmox/ubuntu-24.04-base/`.
 - Add an Ansible inventory for your Proxmox nodes, jump box, and K3s nodes.
-- Bootstrap Argo CD and point it at `argocd/applications/`.
+- Bootstrap Argo CD and point it at the repository using `kubernetes/argocd/root-app.yaml`.
