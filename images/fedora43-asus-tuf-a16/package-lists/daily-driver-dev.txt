@@ -1,0 +1,34 @@
+# Fedora packages baked into the Fedora 43 Workstation payload.
+# ASUS-specific packages from the asus-linux COPR are installed in Kickstart %post.
+
+bash-completion
+btop
+cmake
+curl
+fd-find
+flatpak
+fwupd
+gcc
+gcc-c++
+git
+git-lfs
+gnome-tweaks
+htop
+jq
+lm_sensors
+lshw
+make
+neovim
+NetworkManager-tui
+openssh-server
+pciutils
+powertop
+ripgrep
+rpm-build
+stress-ng
+tmux
+toolbox
+usbutils
+vim-enhanced
+wget
+zsh

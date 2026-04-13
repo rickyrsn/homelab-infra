@@ -1,0 +1,4 @@
+title = "homelab-infra secret scanning rules"
+
+[extend]
+useDefault = true

@@ -1,0 +1,4 @@
+name = "fedora43-asus-tuf-a16-oem"
+description = "Fedora 43 Workstation OEM installer for ASUS TUF A16 FA608UH"
+version = "0.1.0"
+distro = "fedora-43"
