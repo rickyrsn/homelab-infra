@@ -1,0 +1,13 @@
+[Unit]
+Description=Dreamcatcher OEM first-boot tasks
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/dreamcatcher-oem/firstboot-complete
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/dreamcatcher-oem-firstboot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

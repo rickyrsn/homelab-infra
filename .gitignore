@@ -36,11 +36,24 @@ id_ed25519
 id_ed25519.pub
 
 secrets/**/*.age
+*.agekey
 secrets/**/*.pem
 secrets/**/*.key
 secrets/**/*.crt
 secrets/**/*.p12
 secrets/**/*.sops.yaml
+*.sops.yml
+*.sops.json
+**/credentials.json
+**/*credentials*.json
+ansible/inventories/**/host_vars/*.secret.yml
+ansible/inventories/**/host_vars/*.secret.yaml
+ansible/inventories/**/host_vars/*.local.yml
+ansible/inventories/**/host_vars/*.local.yaml
+ansible/inventories/**/group_vars/*.secret.yml
+ansible/inventories/**/group_vars/*.secret.yaml
+ansible/inventories/**/group_vars/*.local.yml
+ansible/inventories/**/group_vars/*.local.yaml
 
 .idea/
 .vscode/

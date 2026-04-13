@@ -62,3 +62,18 @@ Opinionated homelab infrastructure layout for:
 - Create a base Ubuntu template in `packer/proxmox/ubuntu-24.04-base/`.
 - Add an Ansible inventory for your Proxmox nodes, jump box, and K3s nodes.
 - Bootstrap Argo CD and point it at the repository using `kubernetes/argocd/root-app.yaml`.
+
+## Secret Scan Guardrails
+
+- GitHub Actions runs [`.github/workflows/secret-scan.yml`](/Users/ricky/Documents/personal/homelab-infra/.github/workflows/secret-scan.yml) on pull requests, pushes to `main`, and manual dispatches.
+- Local commits can be protected with [`pre-commit`](/Users/ricky/Documents/personal/homelab-infra/.pre-commit-config.yaml) and the `gitleaks` hook.
+
+Install local protection:
+
+```bash
+pip install pre-commit
+pre-commit install
+pre-commit run --all-files
+```
+
+The repository uses [`.gitleaks.toml`](/Users/ricky/Documents/personal/homelab-infra/.gitleaks.toml) so both local hooks and CI share the same secret scanning baseline.
